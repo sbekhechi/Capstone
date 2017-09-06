@@ -1,0 +1,21 @@
+To run server:
+	> node app.js
+Google IP followed by :3000
+
+
+To access sql database
+	> mysql -u root
+current password is ""
+
+
+The server code is in app.js.  This is responsible for populating the SQL table (demo_table), get requests, and post requests.
+
+All html files are in the templates directory.  To add new tutorial or page, add new file there.
+
+All css files are in the style directory.
+
+All javascript files are in the js directory.
+
+All images are in the images directory.
+
+And pass2.py is a brute force password cracking python script

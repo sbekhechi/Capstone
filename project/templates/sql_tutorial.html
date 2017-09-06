@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+
+<!-- jQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- bootstrap CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<!-- Angularjs CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+
+
+ <!-- custom includes -->
+<script src="../js/custom-js.js"></script>
+<script src="../js/indexController.js"></script>
+<script src="../js/tutorialController.js"></script>
+<link rel="stylesheet" type="text/css" href="../style/custom-style.css">
+
+<script>
+   $('[data-toggle=offcanvas]').click(function() {
+      $('.row-offcanvas').toggleClass('active');
+      $('.collapse').toggleClass('in').toggleClass('hidden-xs').toggleClass('visible-xs');	
+
+   });
+</script>
+
+<html>
+<body ng-app="stone_security" ng-controller="tutorialController">
+    <div class='tutorial-header'>
+    </div>
+    <div class='tutorial-left-bar'>
+        <div class='left-bar-header'>
+            
+            Databases
+        
+        </div>
+        <div class='left-bar-image'>
+        
+             <img src="images/db.png" style="height:100px;width:100px;">
+            
+        </div>
+        <div class='left-bar-data-container'>
+            
+            
+            <!-- if user hasn't started session -->
+            <div ng-if="!started" style="margin-left: 20px;">
+                <button ng-click="startSession()">Start Session!</button>
+            </div>
+            
+            
+            
+            
+            
+            <!-- if user has started session -->
+            <div class="panel-group" id="accordion" ng-if="started">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" ng-click="clearWindow()">
+                            What is a database?</a>
+                        </h4>
+                    </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        Database is a collection of information that is organized to be easily managed, updated and accessed. 
+                        <br>
+                        <br>
+                        <b>Relational:</b>  This is the most common approach to database design which is uses  a tabular approach, organizing data into rows and columns. 
+                        <br>
+                        <br>
+                        Other types, although less common, include <b>spatial</b> and <b>distributed databases</b>. This tutorial will focus on relational databases.
+                        <br>
+                    </div>
+                </div>
+                </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" ng-click="clearWindow()">
+                    Database example</a>
+                  </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    - Databases are used everywhere and for a variety of purposes. Take, for example, the St.Olaf directory information:<br>
+                    <button ng-click="setDbExample()">Next</button>
+                    <div ng-if="dbexample">
+                        <br>
+                        For every student there are 6 pieces of information known, namely:
+                        <br><b>Student Name</b><br>
+                        <b>Graduation Year</b><br>
+                        <b>Major(s)</b><br>
+                        <b>Email </b><br>
+                        <b>Dorm </b><br>
+                        <b>Address </b><br>
+                        (you could argue a 7th piece of information, student the picture, but we’ll leave that out for now). <br>
+                        <button ng-click="setDbExample2()">Next</button>
+                    </div>
+                    <div ng-if="dbexample2">
+                        To the right, we can see how the relational database could easily represent this information. The columns of the database would be the fields described above with each row being a new student
+                    </div>
+                    </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" ng-click="clearWindow()">
+                    What is SQL?</a>
+                  </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                  <div class="panel-body">
+                     SQL, or Structured Query Language, is used in programming for managing database systems.<br>
+                      SQL allows DBM (database manager) to “talk” to a database server. This "talk" usually refers to the programmer updating, retrieving or deleting data from a system. <br>
+                      <button ng-click="setSqlContent()">Next</button>
+                      <div ng-if="sqlcontent || sqlcontent2 || sqlcontent3">
+                     The database administrator is the person with complete control of the database system. As for the administrative control of our example, the St. Olaf directories, we could look to  Andy Prehall or Jeff Dixon who are part of the IT staff at St. Olaf <a href="https://wp.stolaf.edu/it/it-staff/">(information page).</a><br>
+                    <br>
+                     Other people that may interact with these databases would be users themselves. An example would a St.Olaf using the directories to search for a friend.<br> 
+                    <button ng-click="setSqlContent2()">Next</button>               
+                     </div>
+                       <div ng-if="sqlcontent2 || sqlcontent3">
+                    The server admin can write SQL commands to alter the database. The next section will cover these commands in detail, but for now, just think of them as Creating, Retrieving, Updating or Deleting data from a database.<br>     
+		    <button ng-click="setSqlContent3()">Next</button> 
+ 
+                    </div>
+		    <div ng-if="sqlcontent3">
+                  Once the SQL commands reach the database, the computers take over and carry out the necessary steps the person sent to them.
+		 
+		    </div>
+                    </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" ng-click="clearWindow()">
+                    Intro to SQL</a>
+                  </h4>
+                </div>
+                <div id="collapse4" class="panel-collapse collapse">
+                  <div class="panel-body">
+		      <button ng-click="setCRUD(0)">Creating</button>
+                        <br>
+			Understanding how data is created and stored in a database is key to understanding
+			why SQL inject is possible.
+			Creating tables and inserting data is fairly straightforward and follows basic syntax.
+			<br>
+			<br>
+		      <button ng-click="setCRUD(1)">Retrieving</button>
+			<br>
+			Retrieving/Sending data is an integral part of any database system. A webpage, for example,
+			might retrieve information from a database based on which username and password are in the system.
+			The database will then send information about the user based on the username and password entered.
+			<br>
+			<br>
+		      <button ng-click="setCRUD(2)">Updating</button>
+			There are plenty of cases where we may need to update existing information in a database. For example,
+			a website may require the user changes their password once a month. Once the user picks a password, 
+			the database will be issued an UPDATE command to replace the old password with the new.
+			<br>
+			<br>
+		      <button ng-click="setCRUD(3)">Deleting</button>
+			Deleting from an SQL database is not an uncommon occurance. There are only a few key SQL commands 
+			that pertain to deleting data.
+			<br>
+			<br>
+		</div>
+                </div>
+              </div>
+               <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse5" ng-click="clearWindow()">
+                    SQL and Security</a>
+                  </h4>
+                </div>
+                <div id="collapse5" class="panel-collapse collapse">
+                  <div class="panel-body">
+			Click here to make injection
+			<button ng-click="setSqlInjection()">Next </button><br>
+			Click here for prepared statement login
+			<button ng-click="setSqlPrepared()">Next </button><br>
+		 	</div>
+                </div>
+              </div>
+
+            </div> 
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    <!-- everything that shows up in the right pane -->
+    <div class="right-data-container">
+    
+
+          <!-- DATABASE EXAMPLE --> 
+          <div ng-if="dbexample">
+           <div class="right-data-container-header">
+               Database Example
+            </div>
+            <div class="right-data-container-image">
+                <img src="images/db_example.png">
+            </div>
+            <div ng-if="dbexample2" style="padding-left:40px;">
+                <table class="content-table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Year</th>
+                        <th>Major</th>
+                        <th>Email</th>
+                        <th>Dorm</th>
+                        <th>Address</th>
+                    </tr>
+                    <tr>
+                        <td>John R. Hamby</td>
+                        <td>2017</td>
+                        <td>Computer Science</td>
+                        <td>hamby</td>
+                        <td >Ytterboe</td>
+                        <td >267 South Kenmore Ave, Elmhurst IL</td>
+                    </tr>
+                    <tr>
+                        <td>Joe Smith</td>
+                        <td>2019</td>
+                        <td>English/Art</td>
+                        <td>smith2</td>
+                        <td>Rand</td>
+                        <td>222 Cool Ln, Eagan Mn</td>
+                    </tr>
+                    <tr>
+                        <td>Samir Bekhechi</td>
+                        <td>2017</td>
+                        <td>Computer Science</td>
+                        <td>bekhechs</td>
+                        <td>Ytterboe</td>
+                        <td>2401 Elianna Drive, Northfield MN</td>
+                    </tr>
+                    <tr>
+                        <td>Sarah Jones</td>
+                        <td>2019</td>
+                        <td>Biology</td>
+                        <td>joness</td>
+                        <td>Hoyme</td>
+                        <td>1856 Desmond Dr, Mirresville VA</td>
+                    </tr>
+                </table>
+                <div style="margin-top:40px;float:left;margin-right:10px;width:20%;">
+                    <button style="width:100px; height:50px" ng-click="setDbExample3()">Click here!</button>
+                </div>
+                <div ng-if="dbexample3" style="margin-top:40px;float:left;margin-right:10px;width:60%; font-size: 20px;">
+                    <b>In this way, we can easily access, change and add data about students at St.Olaf. In the next section we’ll talk about SQL, a language designed for creating and manipulating these databases.</b>
+                </div>
+            </div>
+            
+        </div>
+       
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- WHAT IS SQL -->
+        <div ng-if="sqlcontent">
+            <div class="right-data-container-header">
+            <img src="images/sql_diagram_1.png" style="width:1000px; height:500px">
+            </div>
+        </div>
+        <div ng-if="sqlcontent2">
+            <div class="right-data-container-header">
+            <img src="images/sql_diagram_2.png" style="width:1000px; height:500px">
+            </div>
+        </div>
+        <div ng-if="sqlcontent3">
+            <div class="right-data-container-header">
+            <img src="images/sql_diagram_full.png" style="width:1000px; height:500px">
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <!-- SQL and SECURITY -->
+
+	 <!-- SQL vulnerable form -->
+	<div ng-if="sqlinjection">
+		 <div class="right-data-container-header">
+			<form>
+				<h1>SQL Injection Vulnerable</h1>
+			        <input type="text" ng-model="formData.email" placeholder="Email" required="" auto-focus=""> <br>
+				<input type="text" ng-model="formData.password" placeholder="Password" required=""><br>
+				<div style="float:left; width:400px; height: 80px;">
+					<button type="submit" class="btn btn-primary" ng-click="sub()">Submit </button>
+						<p ng-if="logStatus=='Success'" style="color:green; float:right;">{{logStatus}}</p>
+						<p ng-if="logStatus=='Failed'" style="color:red; float: right;">{{logStatus}}</p>
+				</div>
+			</form>
+		<!--<button ng-click="setSqlInjection2()">Next</button>	-->
+		 </div>
+		<div style="width:100%; float: left; padding-left:40px;">
+			What is an SQL injection?</br>
+			An SQL injection is when user entered input alters the SQL command passed to the server.  Try entering <b>" OR 1=1--</b> in email to see an example.</br></br>
+			What makes a database vulnerable to a sql injection? <br>
+			Below is the <b>SELECT</b> SQL command sent when a user submits there user name
+			and password:<br><br>
+			<div style="font-family: Consolas, monaco, monospace">
+			SELECT * FROM demo_table WHERE email="hamby" AND password="cheesecake" 
+			SELECT * FROM demo_table WHERE email="" OR 1=1-- AND password="cheesecake" 
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- SQL prepared form -->
+	<div ng-if="sqlprepared">
+		 <div class="right-data-container-header">
+			<form>
+				<h1>Using prepared statements</h1>
+				<input type="text" ng-model="formData.email" placeholder="Email" required="" auto-focus=""> <br>
+				<input type="text" ng-model="formData.password" placeholder="Password" required=""><br>
+				<div style="float:left; width:400px; height: 80px;">
+					<button type="submit" class="btn btn-primary" ng-click="sub_prepared()">Submit </button>
+						<p ng-if="logStatus=='Success'" style="color:green; float:right;">{{logStatus}}</p>
+						<p ng-if="logStatus=='Failed'" style="color:red; float: right;">{{logStatus}}</p>
+				</div>
+			</form>
+		 </div>
+		<div style="width:100%; padding-top: 75px;float:left; padding-left:40px;">
+		Prepared statements send the SQL command and input variables to the database separetely.  By labeling input as a variable, there is no chance that user input can alter the SQL command thus rendering injections impossible.
+		</br></br>
+		Example prepared statement code:</br>
+			<div style="font-family: consolas, monaco, monospace;"> 'SELECT * FROM demo_table WHERE email = ? AND password = ?';</div>
+		</div>
+
+	</div>
+
+	<div ng-if="sqltable">
+		<div class = "right-data-container-header">
+			<div style="right: 0px; top: 0px; padding-top: 5%; position: absolute; padding-right: 5%;">
+				<h1>Data Base</h1>
+				<p ng-repeat="item in tableData">{{item.name}} : {{item.email}} : {{item.password}}</p>
+			</div>
+		</div>
+	</div>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- INTRO TO SQL -->	
+
+	<!-- user has selected creating -->	
+        <div ng-if="creating">
+		<div class="right-data-container-header" style="height:100px;">
+  			Creating
+   		</div>
+		<div class="right-data-container-image">
+			<h3>Creating your table</h3>
+			Below is the code snippet used to create a basic SQL table for containing
+			information about student directories:
+			<br><br>
+			<div style="font-family: Consolas,monaco,monospace; float:left; width: 25%">
+			CREATE TABLE directories(<br>
+				<div style="margin-left: 20px;">
+					Name varchar(255), <br>
+					Year int,<br>
+					Major varchar(255),<br>
+					Email varchar(255),<br>
+					Dorm varchar(255),<br>
+					Address varchar(255)<br>
+				</div>
+			</div>
+			<div style="font-family: Consolas,monaco,monospace; float:left; width:25%;">
+			CREATE TABLE <i>table_name</i>( <br>
+				<div style="margin-left:20px;">
+					<i>column_name1 data_type(size),</i><br>
+					<i>column_name2 data_type(size),</i><br>
+					<i>column_name3 data_type(size),</i><br>
+					<i>.....</i><br>
+				</div>
+			</div>
+			<div style="float:left;">
+			<br><br>
+				Here, we are creating a table with 6 columns, namely Name, Year, Major, Email, Dorm and Address.
+				Next to each column name we then specifiy the <i>type</i> of the column.<br>
+				For example, take the column
+				named year.The SQL database is expecting an <b>int</b> <i>type</i> or, in other words, a numeric <b>integer</b>.
+				The varchar(255) <i>type</i> means you can use any number of characters up to length 255.<br>
+				At this point, we've really only defined the outline of our table. We don't have any data in it yet. Let's 
+				put in some data using the <b>INSERT INTO</b> and <b>VALUES command</b>. <br>
+				<br>
+				<button ng-click="setCreating2()">Next</button><br>	
+			</div>
+
+		</div>
+		<div  ng-if="creating2" style="padding-top:75px; width:100%; padding-left:40px;">
+		Below is the code snippet used to insert directory information for one student into our table <i>directories</i>:<br>
+			<br><br>
+			<div style="font-family:Consolas,monaco,monospace; float:left;width:25%;vertical-align:bottom;">
+			INSERT INTO directories <br>
+			VALUES ( <br>
+				<div style="margin-left:20px">
+					"John R. Hamby",<br>
+					2017, <br>
+					"Computer Science", <br>
+					"hamby", <br>
+					"Ytterboe", <br>
+					"267 South Kenmore Ave");<br>
+				</div>			
+			</div>
+			<div style="font-family:Consolas,monaco,monospace;float:left; width:25%;vertical-align:bottom;">
+			INSERT INTO <i>database_name</i><br>
+			VALUES ( <br>
+				<div style="margin-left:20px">
+					<i>value,</i><br>
+					<i>value,</i><br>
+					<i>value,</i><br>
+					<i>.... ); </i><br>
+				</div>
+			</div>
+			<div style="float:left;">
+			<br><br>
+				Now our SQL table has one entry, namely information concerning a student named "John R. Hamby". The
+				<b>INSERT INTO</b> statement selections which table we're using, in this case it is our table 
+				<i>directories</i>. We then use the <b>VALUES</b> command to specify exactly what data is being 
+				inserted into the database.<br>
+				Now let's move on to retrieving data from a database. <br>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- user has selected retrieving -->
+        <div ng-if="retrieving">
+		<div class="right-data-container-header" style="height:100px;">
+  			Retrieving
+   		</div>
+		<div class="right-data-container-image">
+			<h3>Retrieving data from your table</h3>
+			Below is the code snippet used to select all student names and emails from our <i>directories</i> table.
+			<br><br>
+			<div style="font-family: Consolas,monaco,monospace; float:left; width: 25%">
+			SELECT Name, Email <br>
+			 FROM directories; <br>
+			</div>
+			<div style="font-family: Consolas,monaco,monospace; float:left; width:25%;">
+			SELECT <i>column_name, column_name</i><br>
+			 FROM <i>table_name;</i><br>
+			</div>
+			<div style="float:left;">
+				<br><br>
+				This command would look into table for the columns <i>Name</i> and <i>Email</i>. Based on the table
+				we created in the previous exercise (with only 1 data entry)<br>
+				we can imagine the data returned would be <i>Name</i>="John R. Hamby", <i>Email</i>="hamby". If our
+				table had more entries, more names and their corresponding<br>
+				 emails would also be returned. 
+				<br><br>
+				<button ng-click="setRetrieving2()">Next</button><br>	
+			</div>
+
+		</div>
+		<div  ng-if="retrieving2" style=" width:100%; padding-left:40px;">
+			<div style="float:left">
+			Below is the code to select <i>all</i> the data from a given table:
+			</div>
+			<div style="font-family:Consolas,monaco,monospace; float:left;width:25%;vertical-align:bottom;">
+				SELECT * FROM <i>directories</i>;<br>
+			</div>
+			<div style="font-family:Consolas,monaco,monospace;float:left; width:25%;vertical-align:bottom;">
+				INSERT INTO <i>database_name</i>;<br>
+			</div>
+			<div style="float:left;">
+			<br><br>
+				In a similar manner to above, by using the <b>SELECT</b> command, we can specify exactly <i>what</i>
+				we want to take out from out database. The difference lies in our <br>
+				 use of the asterisk, *. Rather than
+				specifying exactly what columns we want, the asterisk just tells the database, "Give me everything this
+				table has got". The <b>FROM</b> command is used in exactly the same way, to specify<br>
+				 the name of the 
+				table we are retrieving data from.
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- user has selected updating -->
+	<div ng-if="updating">
+		<div class="right-data-container-header" style="height:100px;">
+  			Updating
+   		</div>
+		<div class="right-data-container-image">
+			<h3>Updating your table</h3>
+			Below is the code snippet used to update a row in our table <i>directories</i>
+			<br><br>
+			<div style="font-family: Consolas,monaco,monospace; float:left; width: 25%">
+				UPDATE <i>directories</i> <br>
+				SET Year = 2019 <br>
+				WHERE Name = "John R. Hamby"; <br>
+			</div>
+			<div style="font-family: Consolas,monaco,monospace; float:left; width:25%;">
+				UPDATE <i>table_name</i><br>
+				SET <i>column_name</i> = <i>value</i><br>
+				WHERE <i>column_name</i> = <i>value</i>;<br>
+			</div>
+			<div style="float:left;">
+			<br><br>
+				Here we <b>UPDATE</b> a single row in our table, namely the row <b>WHERE</b> <i>Name</i>
+				= "John R. Hamby". We <b>SET</b> the value for the column <i>Year</i> to be 2019, rather than
+				its previous value, 2017.
+				<br>
+			</div>
+
+		</div>
+
+        </div>
+
+
+
+	<!-- user has selected deleting -->
+        <div ng-if="deleting">
+	<div class="right-data-container-header" style="height:100px;">
+  			Deleting
+   		</div>
+		<div class="right-data-container-image">
+			<h3>Delete rows from your table</h3>
+			Below is the code snippet used to delete a row from our table <i>directories</i>
+			<br><br>
+			<div style="font-family: Consolas,monaco,monospace; float:left; width: 25%">
+				DELETE FROM directories<br>
+				WHERE Name = "John R. Hamby";<br>
+			</div>
+			<div style="font-family: Consolas,monaco,monospace; float:left; width:25%;">
+				DELETE FROM <i>table_name</i> <br>
+				WHERE <i>column_name</i> = <i>value</i>
+			</div>
+			<div style="float:left;">
+			<br><br>
+			The<b> DELETE</b> command is a very useful, but also dangerous tool. The above syntax demonstrates how
+			we would remove a user, namely John R. Hamby, from our database.<br>
+			We use the <b>FROM</b> command to specify the name of the table we are deleting from and use the 
+			<b>WHERE</b> command to tell the database where the data is to be deleted.
+		
+				<br><br>
+				<button ng-click="setDeleting2()">Next</button><br>	
+			</div>
+
+		</div>
+		<div  ng-if="deleting2" style="width:100%; padding-left:40px;">
+			Below is the code snippet used to delete an <i>entire</i> table from a SQL database
+			<br><br>
+			<div style="font-family:Consolas,monaco,monospace; float:left; width:25%">
+			DROP TABLE <i>directories</i><br>
+			</div>
+			<div style="font-family:Consolas,monaco,monospace; float:left; width:25%">
+			DROP TABLE <i>table_name</i><br>
+			</div>
+			<br><br>
+			We can use <b>DROP</b> to completely remove our table, <i>directories</i>. It is important to
+			realize that <b>DROP TABLE</b> needs to be used with the upmost caution. Using <b>DROP</b> 
+			in an incorrect manner <br>could cause irreversible data loss for your SQL server. In the next section,
+			we'll talk about ways to protect your SQL commands to ensure commands like <b>DROP TABLE</b> don't
+			accidentally<br> make it to your database.
+		
+		</div>
+	</div>
+	</div> 
+  
+
+        </div> <!-- end right container div -->
+    
+    
+</body>
+</html>
+

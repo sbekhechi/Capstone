@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- bootstrap CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<!-- Angularjs CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+
+<!-- custom includes -->
+<script src="../js/custom-js.js"></script>
+<script src="../js/indexController.js"></script>
+<link rel="stylesheet" type="text/css" href="../style/custom-style.css">
+
+
+
+<html>
+<body ng-app="stone_security" ng-controller="indexController">
+    
+    
+<div class="header-container">
+    <h1>Stone Security<small>&nbsp Welcome</small></h1>
+</div>
+    <div class="body-container">
+    <div class="body-container-r">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onclick="openWindow()">Sign in</button>
+            </form><!-- /form -->
+            <a href="#" class="forgot-password">
+                Forgot the password? {{products[0]}}
+            </a>
+        </div><!-- /card-container -->
+    </div>
+    <div class="body-container-l">
+    
+    </div>
+    </div>
+    
+    
+    <div class="footer-container">
+        <div style="float:left; width:33%">
+         Copyright 2016
+        </div>
+         <div style="float: right; text-align: right;width:33%">
+         help?
+        </div>  
+        <div style="text-align:center">
+         Stone Security
+        </div>
+                                                                  
+    </div>
+</body>
+</html>
+
